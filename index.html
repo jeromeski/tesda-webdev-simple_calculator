@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TESDA | SIMPLE CALCULATOR | DAY 9</title>
+    <link rel="icon" href="favicon.png" />
+    <meta
+      name="keywords"
+      content="html, css, tesda, TESDA, exercise, activity, webdev, web development, informatics, javascript, JS, simple calculator"
+    />
+    <meta name="author" content="Jerome Gacoscosim" />
+    <style>
+      body {
+        font-family: 'Century Gothic';
+        background-image: radial-gradient(yellow, red);
+        height: 70%;
+        padding-top: 15%;
+      }
+      div {
+        padding-top: 40px;
+        border-radius: 10px;
+        border: 1px solid #ddd;
+        background-color: rgba(221, 221, 221, 53%);
+        padding: 20px;
+        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 53%);
+        width: 400px;
+        height: 250px;
+      }
+      input[type='text'] {
+        background-color: rgba(221, 221, 221, 0%);
+        border: 0;
+        border: 1px solid #585757;
+        width: 40px;
+        padding: 5px;
+        font-size: 14px;
+      }
+      button {
+        border-radius: 12px;
+        border: 0;
+        padding: 12px;
+        font-size: 20px;
+      }
+      button:hover {
+        background-color: #6699cc;
+        color: white;
+        border: 0;
+      }
+    </style>
+    <script>
+      function getSum() {
+        var x = parseInt(document.getElementById('num1').value);
+        var y = parseInt(document.getElementById('num2').value);
+        var sum = x + y;
+
+        document.getElementById('demo').innerHTML =
+          'the sum of ' + x + ' and ' + y + ' is ' + sum;
+      }
+
+      function getSubtract() {
+        var x = parseInt(document.getElementById('num1').value);
+        var y = parseInt(document.getElementById('num2').value);
+        var difference = x - y;
+
+        document.getElementById('demo').innerHTML =
+          'the difference of ' + x + ' and ' + y + ' is ' + difference;
+      }
+
+      function getMultiply() {
+        var x = parseInt(document.getElementById('num1').value);
+        var y = parseInt(document.getElementById('num2').value);
+        var product = x * y;
+
+        document.getElementById('demo').innerHTML =
+          'the product of ' + x + ' and ' + y + ' is ' + product;
+      }
+
+      function getDivide() {
+        var x = parseInt(document.getElementById('num1').value);
+        var y = parseInt(document.getElementById('num2').value);
+        var quotient = x / y;
+
+        document.getElementById('demo').innerHTML =
+          'the quotient of ' + x + ' and ' + y + ' is ' + quotient;
+      }
+    </script>
+  </head>
+  <body>
+    <center>
+      <div>
+        <h2>Please input two numbers...</h2>
+
+        <input id="num1" type="text" /> and here:
+        <input id="num2" type="text" />
+        <br /><br />
+
+        <button onclick="getSum()">ADD</button>
+        <button onclick="getSubtract()">SUBTRACT</button>
+        <button onclick="getMultiply()">MULTIPLY</button>
+        <button onclick="getDivide()">DIVIDE</button>
+
+        <h3 id="demo"></h3>
+      </div>
+    </center>
+  </body>
+</html>
