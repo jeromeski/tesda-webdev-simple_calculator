@@ -39,7 +39,8 @@
         border-radius: 12px;
         border: 0;
         padding: 12px;
-        font-size: 20px;
+        font-size: 15px;
+        font-weight: bolder;
       }
       button:hover {
         background-color: #6699cc;
@@ -47,60 +48,65 @@
         border: 0;
       }
     </style>
-    <script>
-      function getSum() {
-        var x = parseInt(document.getElementById('num1').value);
-        var y = parseInt(document.getElementById('num2').value);
-        var sum = x + y;
-
-        document.getElementById('demo').innerHTML =
-          'the sum of ' + x + ' and ' + y + ' is ' + sum;
-      }
-
-      function getSubtract() {
-        var x = parseInt(document.getElementById('num1').value);
-        var y = parseInt(document.getElementById('num2').value);
-        var difference = x - y;
-
-        document.getElementById('demo').innerHTML =
-          'the difference of ' + x + ' and ' + y + ' is ' + difference;
-      }
-
-      function getMultiply() {
-        var x = parseInt(document.getElementById('num1').value);
-        var y = parseInt(document.getElementById('num2').value);
-        var product = x * y;
-
-        document.getElementById('demo').innerHTML =
-          'the product of ' + x + ' and ' + y + ' is ' + product;
-      }
-
-      function getDivide() {
-        var x = parseInt(document.getElementById('num1').value);
-        var y = parseInt(document.getElementById('num2').value);
-        var quotient = x / y;
-
-        document.getElementById('demo').innerHTML =
-          'the quotient of ' + x + ' and ' + y + ' is ' + quotient;
-      }
-    </script>
   </head>
   <body>
     <center>
       <div>
         <h2>Please input two numbers...</h2>
-
-        <input id="num1" type="text" /> and here:
-        <input id="num2" type="text" />
+        <input id="num1" type="text" onfocus="this.value=''"/> and here:
+        <input id="num2" type="text" onfocus="this.value=''"/>
         <br /><br />
-
-        <button onclick="getSum()">ADD</button>
-        <button onclick="getSubtract()">SUBTRACT</button>
-        <button onclick="getMultiply()">MULTIPLY</button>
-        <button onclick="getDivide()">DIVIDE</button>
-
-        <h3 id="demo"></h3>
+            <button onclick="calc.checkInput('add')">ADD</button>
+            <button onclick="calc.checkInput('subtract')">SUBTRACT</button>
+            <button onclick="calc.checkInput('multiply')">MULTIPLY</button>
+            <button onclick="calc.checkInput('divide')">DIVIDE</button>
+            <h3 id="demo"></h3>
+        </center>  
       </div>
     </center>
+    <script>
+      var inputField = document.querySelector('input[type="text"]')
+      inputField.addEventListener('focus', function () {
+        calc.handleClearResults();
+      });
+      var calc = {
+        handleClearResults: function() {
+          document.querySelector('#demo').innerHTML = '&nbsp;';
+        },
+        getSum: function(input1, input2) {
+          var sum = input1 + input2;
+          document.querySelector('#demo').innerHTML= 'The sum of ' +input1 +' + '  +input2+ ' is ' + ' ' + sum;
+        },
+        getSubtract: function(input1, input2) {
+          var difference = input1 - input2;
+          document.querySelector('#demo').innerHTML= 'The difference of ' +input1 +' - '  +input2+ ' is ' + ' ' + difference;
+        },
+        getMultiply: function(input1, input2) {
+          var product = input1 * input2;
+          document.querySelector('#demo').innerHTML= 'The product of ' +input1 +' x '  +input2+ ' is ' + ' ' + product;
+        },
+        getDivide: function(input1, input2) {
+          var quotient = input1 / input2;
+          document.querySelector('#demo').innerHTML= 'The quotient of ' +input1 +' / '  +input2+ ' is ' + ' ' + quotient.toFixed(2);
+        },
+        checkInput: function(type) {
+          var input1 = parseInt(document.querySelector('#num1').value);
+          var input2 = parseInt(document.querySelector('#num2').value);
+          if(isNaN(input1) || isNaN(input2)) {
+            document.querySelector('#demo').innerHTML = 'You entered an invalid value, try again'
+          } else {
+            if(type === 'add') {
+              this.getSum(input1, input2);
+            } else if (type === 'subtract') {
+              this.getSubtract(input1, input2);
+            } else if (type === 'multiply') {
+              this.getMultiply(input1, input2);
+            } else if (type === 'divide') {
+              this.getDivide(input1, input2);
+            }
+          }
+        }
+      }
+    </script>
   </body>
 </html>
