@@ -95,8 +95,8 @@
           
         },
         checkInput: function(type) {
-          var input1 = parseInt(document.querySelector('#num1').value);
-          var input2 = parseInt(document.querySelector('#num2').value);
+          var input1 = Number.parseFloat(document.querySelector('#num1').value);
+          var input2 = Number.parseFloat(document.querySelector('#num2').value);
           if(isNaN(input1) || isNaN(input2)) {
             document.querySelector('#demo').innerHTML = 'You didn\'t enter an integer! </br> <small>Check your input and try again.</small>'
           } else {
