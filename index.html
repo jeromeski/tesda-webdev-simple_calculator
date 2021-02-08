@@ -87,13 +87,18 @@
         },
         getDivide: function(input1, input2) {
           var quotient = input1 / input2;
-          document.querySelector('#demo').innerHTML= 'The quotient of ' +input1 +' / '  +input2+ ' is ' + ' ' + quotient.toFixed(2);
+          if (Number.isInteger(quotient)) {
+            document.querySelector('#demo').innerHTML= 'The quotient of ' +input1 +' / '  +input2+ ' is ' + ' ' + Math.round(quotient);
+          } else {
+            document.querySelector('#demo').innerHTML= 'The quotient of ' +input1 +' / '  +input2+ ' is ' + ' ' + quotient.toFixed(2);
+          }
+          
         },
         checkInput: function(type) {
           var input1 = parseInt(document.querySelector('#num1').value);
           var input2 = parseInt(document.querySelector('#num2').value);
           if(isNaN(input1) || isNaN(input2)) {
-            document.querySelector('#demo').innerHTML = 'You entered an invalid value, try again'
+            document.querySelector('#demo').innerHTML = 'You didn\'t enter an integer! </br> <small>Check your input and try again.</small>'
           } else {
             if(type === 'add') {
               this.getSum(input1, input2);
